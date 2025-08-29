@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <title>Öppna Möllan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#fffef6" />
+
+  <link rel="icon" type="image/png" href="Svart_emblem.png?v=2" />
+  <link rel="apple-touch-icon" href="Svart_emblem.png">
+  <meta name="apple-touch-title" content="Öppna Möllan" />
+
+  <meta name="description" content="Webbkarta över öppna innergårdar på Möllevången under Öppna Möllan." />
+
+  <meta property="og:title" content="Öppna Möllan" />
+  <meta property="og:description" content="Karta över öppna innergårdar på Möllevången under Öppna Möllan." />
+  <meta property="og:image" content="preview2.jpg" />
+  <meta property="og:url" content="https://xn--ppnamllan-z7af.alltatalla.se/" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Öppna Möllan" />
+  <meta name="twitter:description" content="Karta över öppna innergårdar på Möllevången under Öppna Möllan." />
+  <meta name="twitter:image" content="preview2.jpg" />
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <noscript>
+    <div class="noscript-warning">
+      Denna webbplats kräver JavaScript för att fungera korrekt.
+    </div>
+  </noscript>
+
+  <div class="info-overlay" id="infoOverlay">
+    <div class="info-box">
+      <h2>Välkommen till<br>Öppna Möllan</h2>
+      <p>Här kan du se vilka innergårdar som har anmält sig till Öppna Möllan den sjätte september. Klicka på punkterna för att se vilka aktiviteter som du kan ta del av på de olika innergårdarna.</p>
+      <button class="btn" onclick="closeInfo()" aria-label="Stäng informationsrutan">Stäng</button>
+    </div>
+  </div>
+
+  <div class="info-overlay" id="aboutOverlay" style="display: none;">
+    <div class="info-box">
+      <button class="menu-close" onclick="closeOverlay('aboutOverlay')" aria-label="Stäng">&times;</button>
+      <h2>Om Öppna Möllan</h2>
+      <p>På Möllan har vi en lång tradition av att göra saker tillsammans.</p>
+      <p>Sedan 2019 fortsätter vi traditionen genom Öppna Möllan: att expandera det gemensamma, lösa upp gränser och låta staden vara en plats för liv.</p>
+	  <p>Under Öppna Möllan håller innergårdarna runt Möllan öppet. Det anordnas allt från loppisar till sagostunder och mycket mer.</p>
+      <p>I år sker Öppna Möllan på lördagen den 6 september. Klicka runt här i kartan eller kom till oss i rondellen om du undrar över något!</p>
+      <div class="about-svg-wrapper">
+        <img src="Kvarter2.svg" alt="Kvarter">
+      </div>
+    </div>
+  </div>
+
+  <div class="info-overlay" id="AaaOverlay" style="display: none;">
+    <div class="info-box">
+      <button class="menu-close" onclick="closeOverlay('AaaOverlay')" aria-label="Stäng">&times;</button>
+      <h2>Om Allt åt alla</h2>
+      <p>Allt åt alla Malmö arbetar långsiktigt och öppet med att understödja Malmöborna i alla stadens konflikter, för att tillsammans skapa ett nytt Malmö format efter våra hjärtans begär.</p>
+      <p>Vi har funnits sen 2009 och är framför allt aktiva i frågor om rätten till staden och bostäder.</p>
+      <p>Förutom att arrangera Öppna Möllan organiserar vi bland annat hyresgäster att kämpa mot sina hyresvärdar i frågor om underhåll och hyresnivåer.</p>
+      <p><a href="https://alltatalla.se/" target="_blank" rel="noopener">Läs mer på vår hemsida</a>.</p>
+      <div class="about-svg-wrapper">
+        <img src="Logotyp.svg" alt="Logotyp">
+      </div>
+    </div>
+  </div>
+
+  <div class="info-overlay" id="SchemaOverlay" style="display: none;">
+    <div class="info-box">
+      <button class="menu-close" onclick="closeOverlay('SchemaOverlay')" aria-label="Stäng">&times;</button>
+      <h2>Schemat i rondellen</h2>
+      <p>10:00 - Öppningstal</p>
+      <p>10:00 - 12:00 - Pyssel / Ansiktsmålning</p>
+      <p>11:00 - Bostadspolitiskt manifest</p>
+      <p>13:00 - Samtal med forskare om Gaza</p>
+      <p>15:00 - Livepodd</p>
+      <div class="about-svg-wrapper">
+        <img src="Trad.svg" alt="Träd">
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <!--
+    <a class="logo-link" href="https://alltatalla.se/" rel="noopener">
+      <img src="emblem_mork.png" alt="Öppna Möllan logotyp" /> 
+    </a>
+    -->
+    <div class="wordmark-wrapper">
+      <img src="Signatur.svg" alt="Öppna Möllan" class="wordmark" />
+    </div>
+
+    <div class="menu-wrapper">
+      <button class="menu-toggle" aria-label="Meny" id="menuToggle"></button>
+      <nav class="menu-drawer" id="menuDrawer">
+        <button class="menu-close" id="menuClose" aria-label="Stäng meny">&times;</button>
+        <a href="#" id="openSchemaOverlay">Schemat i rondellen</a>
+        <a href="#" id="openAboutOverlay">Om Öppna Möllan</a>
+        <a href="#" id="openAaaOverlay">Om Allt åt alla</a>
+        <a href="https://www.facebook.com/events/569497915741012?locale=sv_SE" target="_blank" rel="noopener">Facebook-event</a>
+      </nav>
+    </div>
+  </header>
+
+  <div id="map"></div>
+  <button id="removeRouteBtn" class="btn" style="display:none;">Ta bort rutt</button>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.min.js"></script>
+  <script src="main.js" defer></script>
+
+  <div id="spinnerOverlay" style="display:none;">
+  <div class="spinner"></div>
+  </div>
+
+</body>
+</html>
