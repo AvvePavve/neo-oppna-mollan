@@ -404,6 +404,36 @@ fetch('data/gazarondellen.geojson')
     console.error("Fel vid inl\u00e4sning av gazarondellen.geojson:", error);
   });
 
+// Stege
+const stegeIcon = L.icon({
+  iconUrl: 'Stege.svg',
+  iconSize: [38, 38],
+  iconAnchor: [19, 38],
+  popupAnchor: [0, -38]
+});
+
+fetch('data/stege.geojson')
+  .then(response => response.json())
+  .then(data => {
+    L.geoJSON(data, {
+      pointToLayer: (feature, latlng) => {
+        return L.marker(latlng, { icon: stegeIcon });
+      },
+      onEachFeature: (feature, layer) => {
+        const latlng = layer.getLatLng();
+		const popup = `
+			<strong>${feature.properties.name || "Innergårdsstege"}</strong><br>
+			<strong>Aktivitet:</strong> Vernissage klockan 11:30.<br>
+			<button class="btn route-btn" data-lat="${latlng.lat}" data-lng="${latlng.lng}">Visa rutt</button>
+		`;
+        layer.bindPopup(popup);
+      }
+    }).addTo(map);
+  })
+  .catch(error => {
+    console.error("Fel vid inl\u00e4sning av stege.geojson:", error);
+  });
+
 // Ruttning! Tänk på att detta ligger på min privata server. Vi kanske inte vill ha det så framöver.
 function routeTo(destinationLatLng) {
   function startRouting(fromLatLng) {
@@ -592,3 +622,4 @@ window.addEventListener('touchstart', () => {
 fixViewportHeight();
 
 // Okej, jag vet att detta är vibe code spaghetti. Till dig som eventuellt tar över detta projekt: förlåt, och jag hoppas att du kan göra det bättre. /avvepavve
+
