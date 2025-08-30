@@ -407,9 +407,9 @@ fetch('data/gazarondellen.geojson')
 // Stege
 const stegeIcon = L.icon({
   iconUrl: 'Stege.svg',
-  iconSize: [38, 38],
-  iconAnchor: [19, 38],
-  popupAnchor: [0, -38]
+  iconSize: [34, 34],
+  iconAnchor: [17, 34],
+  popupAnchor: [0, -34]
 });
 
 fetch('data/stege.geojson')
@@ -622,5 +622,6 @@ window.addEventListener('touchstart', () => {
 fixViewportHeight();
 
 // Okej, jag vet att detta är vibe code spaghetti. Till dig som eventuellt tar över detta projekt: förlåt, och jag hoppas att du kan göra det bättre. /avvepavve
+
 
 
