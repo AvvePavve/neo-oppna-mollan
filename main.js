@@ -423,7 +423,7 @@ fetch('data/stege.geojson')
         const latlng = layer.getLatLng();
 		const popup = `
 			<strong>${feature.properties.name || "Innergårdsstege"}</strong><br>
-			<strong>Aktivitet:</strong> Vernissage klockan 11:30.<br>
+			<strong>Aktivitet:</strong> Vernissage klockan 11:30 på Kristianstadsgatan 39B.<br>
 			<button class="btn route-btn" data-lat="${latlng.lat}" data-lng="${latlng.lng}">Visa rutt</button>
 		`;
         layer.bindPopup(popup);
@@ -622,4 +622,5 @@ window.addEventListener('touchstart', () => {
 fixViewportHeight();
 
 // Okej, jag vet att detta är vibe code spaghetti. Till dig som eventuellt tar över detta projekt: förlåt, och jag hoppas att du kan göra det bättre. /avvepavve
+
 
