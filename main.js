@@ -356,7 +356,7 @@ async function uppdateraAktiviteterFrånGoogleFormulär() {
     if (layerControl) {
       map.removeControl(layerControl);
     }
-    layerControl = L.control.layers(null, overlayMaps, { collapsed: true, position: 'topleft' }).addTo(map);
+//    layerControl = L.control.layers(null, overlayMaps, { collapsed: true, position: 'topleft' }).addTo(map);
 
   } catch (err) {
     console.error("Fel vid formul\u00e4rintegration:", err);
