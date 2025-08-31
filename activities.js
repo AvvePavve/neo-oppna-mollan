@@ -46,13 +46,8 @@ export class ActivitiesManager {
         throw new Error("Datan från formuläret kunde inte tolkas som en lista.");
       }
 
-      // Logga fältnamnen för debugging
-      if (formData.length > 0) {
-        console.log("Tillgängliga fältnamn:", Object.keys(formData[0]));
-      }
-
       const formSvar = formData.map(row => ({
-        adress: this.normaliseraAdress(row["🏠 Gatuadress till din innergård"] || ""),
+        adress: this.normaliseraAdress(row["📍 Gatuadress till din innergård"] || ""),
         aktivitet: row["🕺 Vad kommer hända på innergården?"] || "Ingen aktivitet angiven",
         kategori: row["Kategori"] || "Övrigt"
       }));
