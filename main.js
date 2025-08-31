@@ -77,7 +77,7 @@ function initializeApp() {
     // Starta buildings manager
     buildingsManager = new BuildingsManager(map);
 
-    console.log('Öppna Möllan karta initialiserad!');
+    console.log('Lyckad inladdning');
     
   } catch (error) {
     console.error('Fel vid initialisering av applikationen:', error);
@@ -100,3 +100,4 @@ export {
   buildingsManager, 
   uiManager 
 };
+
