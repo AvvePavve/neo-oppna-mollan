@@ -25,7 +25,7 @@ export class ActivitiesManager {
 //    setInterval(() => {
 //      this.uppdateraAktiviteterFrånGoogleFormulär();
 //    }, 120000);
-//  }
+  }
 
   normaliseraAdress(adress) {
     return adress
