@@ -21,11 +21,11 @@ export class ActivitiesManager {
     // Starta uppdatering
     this.uppdateraAktiviteterFrånGoogleFormulär();
     
-    // Uppdatera var 2:a minut
-    setInterval(() => {
-      this.uppdateraAktiviteterFrånGoogleFormulär();
-    }, 120000);
-  }
+    // Uppdatera var 2:a minut (Avstängt)
+//    setInterval(() => {
+//      this.uppdateraAktiviteterFrånGoogleFormulär();
+//    }, 120000);
+//  }
 
   normaliseraAdress(adress) {
     return adress
