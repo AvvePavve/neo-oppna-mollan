@@ -46,6 +46,11 @@ export class ActivitiesManager {
         throw new Error("Datan från formuläret kunde inte tolkas som en lista.");
       }
 
+      // Logga fältnamnen för debugging
+      if (formData.length > 0) {
+        console.log("Tillgängliga fältnamn:", Object.keys(formData[0]));
+      }
+
       const formSvar = formData.map(row => ({
         adress: this.normaliseraAdress(row["🏠 Gatuadress till din innergård"] || ""),
         aktivitet: row["🕺 Vad kommer hända på innergården?"] || "Ingen aktivitet angiven",
@@ -71,12 +76,12 @@ export class ActivitiesManager {
         }
       });
 
-      // Logga icke-matchade adresser för debugging
+      // Logga icke-matchade adresser för debugging (men skippa tomma)
       formSvar.forEach(entry => {
         const found = geoJson.features.find(feature => 
           this.normaliseraAdress(feature.properties.beladress || "") === entry.adress
         );
-        if (!found) {
+        if (!found && entry.adress.trim() !== "") { // Bara logga icke-tomma adresser
           console.log(`Ingen matchning för adress i formulär: "${entry.adress}"`);
         }
       });
