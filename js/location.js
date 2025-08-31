@@ -8,6 +8,7 @@ export class LocationManager {
     this.userMarker = null;
     this.accuracyCircle = null;
     this.hasCenteredUser = false;
+    this.shouldOpenPopup = false;
     
     this.userIcon = L.divIcon({
       className: 'user-location-icon',
@@ -30,7 +31,7 @@ export class LocationManager {
 
         L.DomEvent.on(link, 'click', L.DomEvent.stop)
           .on(link, 'click', () => {
-            this.showUserLocation();
+            this.showUserLocation(true);
           });
 
         return container;
@@ -43,7 +44,9 @@ export class LocationManager {
     L.control.locate({ position: 'topright' }).addTo(this.map);
   }
 
-  showUserLocation() {
+  showUserLocation(openPopup = false) {
+    this.shouldOpenPopup = openPopup;
+
     if (!navigator.geolocation) {
       alert("Geolocation stöds inte av din webbläsare.");
       return;
