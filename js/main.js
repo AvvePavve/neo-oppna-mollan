@@ -12,12 +12,10 @@ const defaultZoom = 16;
 
 // Baskarta
 //const lightTiles = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.{ext}', {
-const lightTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}/{r}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://www.carto.com/">CARTO</a>',
-  subdomains: 'abcd',
+const lightTiles = L.tileLayer('https://api.maptiler.com/maps/dataviz/{z}/{x}/{y}.png?key=AnloT5VXYX3E6sqkSTtS', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://www.maptiler.com/copyright">MapTiler</a>',
   minZoom: 0,
   maxZoom: 20,
-  crossOrigin: true
   //attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   //ext: 'png'
 });
