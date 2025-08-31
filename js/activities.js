@@ -1,4 +1,4 @@
-// activities.js - Hanterar aktiviteter och Google Forms integration
+// activities.js - Aktiviteter o Forms
 
 export class ActivitiesManager {
   constructor(map) {
@@ -18,7 +18,7 @@ export class ActivitiesManager {
   }
 
   initActivities() {
-    // Starta första uppdatering
+    // Starta uppdatering
     this.uppdateraAktiviteterFrånGoogleFormulär();
     
     // Uppdatera var 2:a minut
@@ -55,7 +55,7 @@ export class ActivitiesManager {
       const geoRes = await fetch('data/adresser_rev.geojson');
       const geoJson = await geoRes.json();
 
-      // Matcha formulärdata med geografisk data
+      // Matcha data
       geoJson.features.forEach(feature => {
         const geoAdress = this.normaliseraAdress(feature.properties.beladress || "");
         const match = formSvar.find(entry => geoAdress === entry.adress);
@@ -71,7 +71,7 @@ export class ActivitiesManager {
         }
       });
 
-      // Logga icke-matchade adresser för debugging (men skippa tomma)
+      // Logga dåliga adresser för debugging (men skippa tomma)
       formSvar.forEach(entry => {
         const found = geoJson.features.find(feature => 
           this.normaliseraAdress(feature.properties.beladress || "") === entry.adress
@@ -124,7 +124,7 @@ export class ActivitiesManager {
       });
     });
   }
-
+//Layer control används inte, men kan vara bra att ha
   updateLayerControl() {
     // Spara aktiva kategorier
     const activeCategories = new Set();
@@ -151,7 +151,7 @@ export class ActivitiesManager {
       }
     }
 
-    // Uppdatera layer control (för närvarande inaktiverad)
+    // Uppdatera layer control (inaktiverad)
     if (this.layerControl) {
       this.map.removeControl(this.layerControl);
     }

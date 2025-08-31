@@ -1,4 +1,4 @@
-// buildings.js - Hanterar 3D-byggnader och specialmarkörer
+// buildings.js - Hanterar "3D-byggnader" och specialmarkörer
 
 export class BuildingsManager {
   constructor(map) {
@@ -11,7 +11,7 @@ export class BuildingsManager {
   }
 
   initIcons() {
-    // Rondellen/Gaza icon
+    // Rondellen icon
     this.gazaIcon = L.icon({
       iconUrl: 'Logotyp_Nal.svg',
       iconSize: [38, 38],

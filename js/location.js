@@ -1,4 +1,4 @@
-// location.js - Hanterar användarens plats och geolocation
+// location.js
 
 export class LocationManager {
   constructor(map) {
@@ -20,7 +20,7 @@ export class LocationManager {
   }
 
   initLocationControl() {
-    // Min plats kontroll
+    // Min plats
     L.Control.Locate = L.Control.extend({
       onAdd: (map) => {
         const container = L.DomUtil.create('div', 'leaflet-control');
@@ -127,7 +127,7 @@ export class LocationManager {
     }
   }
 
-  // Promise-baserad metod för att få aktuell position
+  // Få aktuell position
   getCurrentPosition() {
     return new Promise((resolve, reject) => {
       if (this.userLatLng) {
@@ -156,7 +156,6 @@ export class LocationManager {
     });
   }
 
-  // Getters för externa moduler
   getUserLatLng() {
     return this.userLatLng;
   }

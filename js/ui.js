@@ -1,4 +1,4 @@
-// ui.js - Hanterar användarinterface, menyer och overlays
+// ui.js - interface, menyer och overlays
 
 export class UIManager {
   constructor() {

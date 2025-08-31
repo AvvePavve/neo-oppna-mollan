@@ -1,4 +1,4 @@
-// main.js - Huvudfil som initialiserar alla moduler
+// main.js
 
 import { LocationManager } from './location.js';
 import { RoutingManager } from './routing.js';
@@ -6,7 +6,7 @@ import { ActivitiesManager } from './activities.js';
 import { BuildingsManager } from './buildings.js';
 import { UIManager } from './ui.js';
 
-// Grundläggande kartinställningar
+// Vygrejer
 const defaultCenter = [55.591988278009765, 13.011586184559851];
 const defaultZoom = 16;
 
@@ -18,13 +18,12 @@ const lightTiles = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smoot
   ext: 'png'
 });
 
-// Skapa karta
 const map = L.map('map', { 
   layers: [], 
   zoomControl: false 
 }).setView(defaultCenter, defaultZoom);
 
-// Kartgränser
+// Bounds
 const bounds = L.latLngBounds(
   [55.53, 12.90],  // sydväst
   [55.65, 13.12]   // nordost
@@ -34,12 +33,11 @@ map.setMaxBounds(bounds);
 map.setMinZoom(14);
 map.setMaxZoom(20);
 
-// Håll kartan inom gränser
 map.on('drag', () => {
   map.panInsideBounds(bounds, { animate: false });
 });
 
-// Lägg till ljusa kartan (mörk mode temporärt inaktiverat)
+// Lägg till baskarta
 lightTiles.addTo(map);
 
 // Skapa panes för olika lager
@@ -49,7 +47,7 @@ map.getPane('userPane').style.zIndex = 1000;
 map.createPane('userAccuracyPane');
 map.getPane('userAccuracyPane').style.zIndex = 599;
 
-// Initialisera alla managers/moduler
+// Initialisera alla managers
 let locationManager;
 let routingManager;
 let activitiesManager;
@@ -58,27 +56,21 @@ let uiManager;
 
 function initializeApp() {
   try {
-    // Starta UI manager först
     uiManager = new UIManager();
     uiManager.setupGlobalFunctions();
 
-    // Starta location manager
     locationManager = new LocationManager(map);
-    
-    // Gör locationManager tillgänglig globalt för andra moduler
+
     window.locationManager = locationManager;
 
-    // Starta routing manager
     routingManager = new RoutingManager(map);
 
-    // Starta activities manager
     activitiesManager = new ActivitiesManager(map);
 
-    // Starta buildings manager
     buildingsManager = new BuildingsManager(map);
 
     console.log('Lyckad inladdning');
-    
+
   } catch (error) {
     console.error('Fel vid initialisering av applikationen:', error);
   }
@@ -91,7 +83,7 @@ if (document.readyState === 'loading') {
   initializeApp();
 }
 
-// Exportera för debugging/externa referenser
+// (Debugging)
 export { 
   map, 
   locationManager, 

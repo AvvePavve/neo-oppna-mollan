@@ -1,4 +1,4 @@
-// routing.js - Hanterar all routing-funktionalitet
+// routing.js
 
 export class RoutingManager {
   constructor(map) {
@@ -11,7 +11,7 @@ export class RoutingManager {
   }
 
   initEventListeners() {
-    // Lyssna på route-knappar
+    // Rutt-knappar
     document.addEventListener('click', (e) => {
       if (e.target.classList.contains('route-btn')) {
         const lat = parseFloat(e.target.getAttribute('data-lat'));
@@ -29,7 +29,7 @@ export class RoutingManager {
   routeTo(destinationLatLng) {
     this.isRoutingActive = true;
     
-    // Importera userLatLng och watchId från location manager
+    // Importera userLatLng och watchId från location
     const userLatLng = window.locationManager?.getUserLatLng();
     
     if (userLatLng) {
@@ -85,7 +85,7 @@ export class RoutingManager {
 
     document.getElementById("spinnerOverlay").style.display = "flex";
     
-    // Använd location manager för att få position
+    // Använd location manager
     window.locationManager?.getCurrentPosition()
       .then((userLatLng) => {
         if (this.isRoutingActive) {
@@ -107,7 +107,6 @@ export class RoutingManager {
     }
   }
 
-  // Getter för externa moduler
   getRoutingControl() {
     return this.routingControl;
   }
