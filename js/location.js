@@ -8,6 +8,7 @@ export class LocationManager {
     this.userMarker = null;
     this.accuracyCircle = null;
     this.hasCenteredUser = false;
+    this.shouldOpenPopup = false;
     
     this.userIcon = L.divIcon({
       className: 'user-location-icon',
@@ -49,6 +50,7 @@ export class LocationManager {
       return;
     }
     
+    this.shouldOpenPopup = true;
     document.getElementById("spinnerOverlay").style.display = "flex";
     
     if (!this.watchId) {
@@ -98,6 +100,11 @@ export class LocationManager {
       this.hasCenteredUser = true;
     }
     
+    if (this.shouldOpenPopup && this.userMarker) {
+	this.userMarker.openPopup();
+	this.shouldOpenPopup = false;
+    }
+
     console.log("Ny position:", position.coords);
   }
 
