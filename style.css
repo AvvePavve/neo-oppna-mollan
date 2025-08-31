@@ -415,3 +415,74 @@ body.no-scroll {
     color: #fff;
   }
 } */
+
+/* ==================== */
+/* PRESTANDOPTIMERINGAR */
+/* ==================== */
+
+.leaflet-container {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.leaflet-marker-icon {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  will-change: transform;
+}
+
+/* Reducera animationer för bättre prestanda */
+.leaflet-pane,
+.leaflet-tile,
+.leaflet-marker-icon, 
+.leaflet-marker-shadow,
+.leaflet-tile-container,
+.leaflet-pane > svg,
+.leaflet-pane > canvas,
+.leaflet-zoom-box,
+.leaflet-image-layer,
+.leaflet-layer {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Optimera för hardware acceleration */
+.leaflet-map-pane {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Fix för vissa rendering issues på mobile */
+.leaflet-tile-pane {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Optimera overlay animations */
+.info-overlay {
+  will-change: opacity;
+}
+
+/* Optimera knappar för touch devices */
+.btn,
+.menu-toggle,
+.menu-close {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent layout shifts */
+.leaflet-control {
+  will-change: transform;
+}
+
+/* Optimera spinner */
+.spinner {
+  will-change: transform;
+}
