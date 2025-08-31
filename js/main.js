@@ -24,7 +24,7 @@ const map = L.map('map', {
   layers: [], 
   zoomControl: false,
   preferCanvas: true,
-  inertia: false,
+  //inertia: false,
   keyboard: false,
 }).setView(defaultCenter, defaultZoom);
 

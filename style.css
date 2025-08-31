@@ -438,7 +438,7 @@ body.no-scroll {
 }
 
 /* Reducera animationer för bättre prestanda */
-.leaflet-pane,
+/*.leaflet-pane,
 .leaflet-tile,
 .leaflet-marker-icon, 
 .leaflet-marker-shadow,
@@ -450,7 +450,7 @@ body.no-scroll {
 .leaflet-layer {
   transition: none !important;
   animation: none !important;
-}
+} */
 
 /* Optimera för hardware acceleration */
 .leaflet-map-pane {
