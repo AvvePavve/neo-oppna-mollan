@@ -1,4 +1,5 @@
 // buildings.js - Hanterar "3D-byggnader" och specialmarkörer
+// buildings.js - KORRIGERAD VERSION
 export class BuildingsManager {
   constructor(map) {
     this.map = map;
@@ -74,7 +75,7 @@ export class BuildingsManager {
       }
     });
 
-    // Vägglayer
+    // ✅ VÄGGAR FÖRST (lägre z-index)
     const wallLayer = L.geoJSON({
       type: "FeatureCollection",
       features: allWalls
@@ -89,10 +90,15 @@ export class BuildingsManager {
     });
     this.buildingLayers.push(wallLayer);
     wallLayer.addTo(this.map);
-  }
 
+    // ✅ TAK EFTER (högre z-index) - FIXAD SYNTAX
     const roofLayer = L.geoJSON(allRoofs, {
-      style: { color: '#f47c31', weight: 1, fillColor: '#f47c31', fillOpacity: 1 },
+      style: {
+        color: '#f47c31',
+        weight: 1,
+        fillColor: '#f47c31',
+        fillOpacity: 1
+      },
       interactive: false
     });
     this.buildingLayers.push(roofLayer);
