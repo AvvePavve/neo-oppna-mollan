@@ -20,7 +20,10 @@ const lightTiles = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smoot
 
 const map = L.map('map', { 
   layers: [], 
-  zoomControl: false 
+  zoomControl: false,
+  preferCanvas: true,
+  inertia: false,
+  keyboard: false,
 }).setView(defaultCenter, defaultZoom);
 
 // Bounds
