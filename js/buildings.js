@@ -74,19 +74,6 @@ export class BuildingsManager {
       }
     });
 
-    // Taklager
-    const roofLayer = L.geoJSON(allRoofs, {
-      style: {
-        color: '#f47c31',
-        weight: 1,
-        fillColor: '#f47c31',
-        fillOpacity: 1
-      },
-      interactive: false
-    });
-    this.buildingLayers.push(roofLayer);
-    roofLayer.addTo(this.map);
-
     // Vägglayer
     const wallLayer = L.geoJSON({
       type: "FeatureCollection",
@@ -102,6 +89,14 @@ export class BuildingsManager {
     });
     this.buildingLayers.push(wallLayer);
     wallLayer.addTo(this.map);
+  }
+
+    const roofLayer = L.geoJSON(allRoofs, {
+      style: { color: '#f47c31', weight: 1, fillColor: '#f47c31', fillOpacity: 1 },
+      interactive: false
+    });
+    this.buildingLayers.push(roofLayer);
+    roofLayer.addTo(this.map);
   }
 
   loadSpecialMarkers() {
