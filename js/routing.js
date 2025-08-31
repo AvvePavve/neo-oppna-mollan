@@ -14,6 +14,9 @@ export class RoutingManager {
     // Rutt-knappar
     document.addEventListener('click', (e) => {
       if (e.target.classList.contains('route-btn')) {
+	e.stopPropagation();
+	e.preventDefault();
+
         const lat = parseFloat(e.target.getAttribute('data-lat'));
         const lng = parseFloat(e.target.getAttribute('data-lng'));
         this.routeTo([lat, lng]);
