@@ -8,7 +8,6 @@ export class LocationManager {
     this.userMarker = null;
     this.accuracyCircle = null;
     this.hasCenteredUser = false;
-    this.shouldOpenPopup = false;
     
     this.userIcon = L.divIcon({
       className: 'user-location-icon',
@@ -31,7 +30,7 @@ export class LocationManager {
 
         L.DomEvent.on(link, 'click', L.DomEvent.stop)
           .on(link, 'click', () => {
-            this.showUserLocation(true);
+            this.showUserLocation();
           });
 
         return container;
@@ -44,9 +43,7 @@ export class LocationManager {
     L.control.locate({ position: 'topright' }).addTo(this.map);
   }
 
-  showUserLocation(openPopup = false) {
-    this.shouldOpenPopup = openPopup;
-
+  showUserLocation() {
     if (!navigator.geolocation) {
       alert("Geolocation stöds inte av din webbläsare.");
       return;
@@ -60,7 +57,9 @@ export class LocationManager {
       // Om redan aktiv, använd senaste position
       if (this.userLatLng) {
         this.map.setView(this.userLatLng, 17);
-        if (this.userMarker) this.userMarker.openPopup();
+        if (this.userMarker) {
+	   this.userMarker.bindPopup("Du är här!").openPopup();
+	}
         this.hasCenteredUser = true;
       }
       document.getElementById("spinnerOverlay").style.display = "none";
@@ -96,7 +95,6 @@ export class LocationManager {
     
     if (!this.hasCenteredUser) {
       this.map.setView(this.userLatLng, 17);
-      if (this.userMarker) this.userMarker.openPopup();
       this.hasCenteredUser = true;
     }
     
