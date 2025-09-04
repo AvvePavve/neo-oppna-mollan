@@ -6,24 +6,21 @@ import { ActivitiesManager } from './activities.js';
 import { BuildingsManager } from './buildings.js';
 import { UIManager } from './ui.js';
 
+// MapLibre för vektor-baskarta
+import maplibregl from 'maplibre-gl';
+import '@maplibre/maplibre-gl-leaflet';
+
 // Vygrejer
 const defaultCenter = [55.591988278009765, 13.011586184559851];
 const defaultZoom = 16;
 
-const lightTiles = L.tileLayer('https://tiles.openfreemap.org/liberty/{z}/{x}/{y}.png', {
-  minZoom: 0,
-  maxZoom: 20,
-  attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors | Tiles from OpenFreeMap',
+// Baskarta via OpenFreeMap (vektortiles)
+const lightTiles = L.maplibreGL({
+  style: 'https://tiles.openfreemap.org/styles/bright', // du kan även testa 'liberty'
+  attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors | Tiles: OpenFreeMap'
 });
 
-// Baskarta
-/*const lightTiles = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.{ext}', {
-  minZoom: 0,
-  maxZoom: 20,
-  attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-  ext: 'png'
-}); */
-
+// Skapa karta
 const map = L.map('map', { 
   layers: [], 
   zoomControl: false 
@@ -66,13 +63,10 @@ function initializeApp() {
     uiManager.setupGlobalFunctions();
 
     locationManager = new LocationManager(map);
-
     window.locationManager = locationManager;
 
     routingManager = new RoutingManager(map);
-
     activitiesManager = new ActivitiesManager(map);
-
     buildingsManager = new BuildingsManager(map);
 
     console.log('Lyckad inladdning');
@@ -98,6 +92,3 @@ export {
   buildingsManager, 
   uiManager 
 };
-
-
-
