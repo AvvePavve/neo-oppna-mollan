@@ -16,13 +16,13 @@ const defaultZoom = 16;
 }); */
 
 // Baskarta
-//const lightTiles = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.{ext}', {
-const lightTiles = L.tileLayer('https://api.maptiler.com/maps/dataviz/{z}/{x}/{y}.png?key=AnloT5VXYX3E6sqkSTtS', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://www.maptiler.com/copyright">MapTiler</a>',
+const lightTiles = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.{ext}', {
+//const lightTiles = L.tileLayer('https://api.maptiler.com/maps/dataviz/{z}/{x}/{y}.png?key=AnloT5VXYX3E6sqkSTtS', {
+  //attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://www.maptiler.com/copyright">MapTiler</a>',
   minZoom: 0,
   maxZoom: 20,
-  //attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-  //ext: 'png'
+  attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  ext: 'png'
 });
 
 const map = L.map('map', { 
