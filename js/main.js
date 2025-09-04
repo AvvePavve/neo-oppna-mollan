@@ -10,6 +10,11 @@ import { UIManager } from './ui.js';
 const defaultCenter = [55.591988278009765, 13.011586184559851];
 const defaultZoom = 16;
 
+/*const lightTiles = L.maplibreGL({
+  style: 'https://tiles.openfreemap.org/styles/bright',
+  attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors | Tiles: OpenFreeMap'
+}); */
+
 // Baskarta
 //const lightTiles = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.{ext}', {
 const lightTiles = L.tileLayer('https://api.maptiler.com/maps/dataviz/{z}/{x}/{y}.png?key=AnloT5VXYX3E6sqkSTtS', {
