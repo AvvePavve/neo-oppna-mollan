@@ -6,18 +6,14 @@ import { ActivitiesManager } from './activities.js';
 import { BuildingsManager } from './buildings.js';
 import { UIManager } from './ui.js';
 
-// MapLibre för vektor-baskarta
-import maplibregl from 'maplibre-gl';
-import '@maplibre/maplibre-gl-leaflet';
-
 // Vygrejer
 const defaultCenter = [55.591988278009765, 13.011586184559851];
 const defaultZoom = 16;
 
 // Baskarta via OpenFreeMap (vektortiles)
 const lightTiles = L.maplibreGL({
-  style: 'https://tiles.openfreemap.org/styles/bright', // du kan även testa 'liberty'
-  attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors | Tiles: OpenFreeMap'
+  style: 'https://tiles.openfreemap.org/styles/bright',
+  attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors | Tiles: OpenFreeMap'
 });
 
 // Skapa karta
@@ -92,3 +88,4 @@ export {
   buildingsManager, 
   uiManager 
 };
+
