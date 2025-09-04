@@ -14,7 +14,6 @@
   <link rel="icon" type="image/png" href="Svart_emblem.png?v=2" />
   <link rel="apple-touch-icon" href="Svart_emblem.png">
   <meta name="apple-touch-title" content="Öppna Möllan" />
-
   <meta name="description" content="Webbkarta över öppna innergårdar på Möllevången under Öppna Möllan." />
 
   <meta property="og:title" content="Öppna Möllan" />
@@ -28,18 +27,13 @@
   <meta name="twitter:description" content="Karta över öppna innergårdar på Möllevången under Öppna Möllan." />
   <meta name="twitter:image" content="preview2.jpg" />
 
+  <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
   <!-- MapLibre GL -->
   <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
-  <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
-
-<!-- MapLibre GL Leaflet bridge -->
-  <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet/leaflet-maplibre-gl.js"></script>
-
-  
+  <!-- Din CSS -->
   <link rel="stylesheet" href="style.css" />
-  
 </head>
 <body>
 
@@ -49,6 +43,7 @@
     </div>
   </noscript>
 
+  <!-- INFO-OVERLAYS -->
   <div class="info-overlay" id="infoOverlay">
     <div class="info-box">
       <h2>Välkommen till<br>Öppna Möllan</h2>
@@ -62,8 +57,8 @@
       <button class="menu-close" onclick="closeOverlay('aboutOverlay')" aria-label="Stäng">&times;</button>
       <h2>Om Öppna Möllan</h2>
       <p>På Möllan har vi en lång tradition av att göra saker tillsammans.</p>
-      <p>Sedan 2019 fortsätter vi traditionen genom Öppna Möllan: att expandera det gemensamma, lösa upp gränser och låta staden vara en plats för liv.</p>
-	  <p>Under Öppna Möllan håller innergårdarna runt Möllan öppet. Det anordnas allt från loppisar till sagostunder och mycket mer.</p>
+      <p>Sedan 2019 fortsätter traditionen genom Öppna Möllan: att expandera det gemensamma, lösa upp gränser och låta staden vara en plats för liv.</p>
+      <p>Under Öppna Möllan håller innergårdarna runt Möllan öppet. Det anordnas allt från loppisar till sagostunder och mycket mer.</p>
       <p>Klicka runt här i kartan eller kom till oss i rondellen om du undrar över något!</p>
       <div class="about-svg-wrapper">
         <img src="Kvarter2.svg" alt="Kvarter">
@@ -102,12 +97,8 @@
     </div>
   </div>
 
+  <!-- HEADER -->
   <header>
-    <!--
-    <a class="logo-link" href="https://alltatalla.se/" rel="noopener">
-      <img src="emblem_mork.png" alt="Öppna Möllan logotyp" /> 
-    </a>
-    -->
     <div class="wordmark-wrapper">
       <img src="Signatur.svg" alt="Öppna Möllan" class="wordmark" />
     </div>
@@ -124,21 +115,25 @@
     </div>
   </header>
 
+  <!-- MAP -->
   <div id="map"></div>
   <button id="removeRouteBtn" class="btn" style="display:none;">Ta bort rutt</button>
 
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.min.js"></script>
-  <script type="module" src="js/main.js" defer></script>
-
   <div id="spinnerOverlay" style="display:none;">
-  <div class="spinner"></div>
+    <div class="spinner"></div>
   </div>
+
+  <!-- SCRIPTORDNING -->
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- Leaflet Routing Machine -->
+  <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.min.js"></script>
+  <!-- MapLibre GL JS -->
+  <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+  <!-- Leaflet -> MapLibre bridge -->
+  <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet/leaflet-maplibre-gl.js"></script>
+  <!-- Din modul -->
+  <script type="module" src="js/main.js" defer></script>
 
 </body>
 </html>
-
-
-
-
-
