@@ -10,7 +10,7 @@ import { UIManager } from './ui.js';
 const defaultCenter = [55.591988278009765, 13.011586184559851];
 const defaultZoom = 16;
 
-const lightTiles = L.tileLayer('https://tile.openfreemap.org/{z}/{x}/{y}.png', {
+const lightTiles = L.tileLayer('https://tiles.openfreemap.org/liberty/{z}/{x}/{y}.png', {
   minZoom: 0,
   maxZoom: 20,
   attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors | Tiles from OpenFreeMap',
@@ -98,5 +98,6 @@ export {
   buildingsManager, 
   uiManager 
 };
+
 
 
